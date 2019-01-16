@@ -3,4 +3,4 @@
 #
 # for example, to export the root of the C drive to every address
 # that starts with 192.168.0:
-./		192.168.0/24
+/Users/zhangjianxin/Desktop/works/nfs4j/data		192.168.1/24

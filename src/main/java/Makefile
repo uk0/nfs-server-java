@@ -47,7 +47,8 @@ NFSTHREADS = NFSItem.java \
 #   To port to a new platform copy and edit one of the platform specific
 #   nfs's (like ntnfs) and add it here.
 NFS = nfs.java \
-	ntnfs.java
+	ntnfs.java \
+	unixfs1.java
 
 SOURCES = $(CONSTS) $(UTILS) $(NFSUTILS) $(RPC) $(NFSTHREADS) $(NFS)
 OBJECTS = $(addsuffix .compiled,$(basename $(SOURCES)))

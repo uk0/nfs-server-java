@@ -21,7 +21,7 @@
 import java.io.*;
 
 class ntnfs extends nfs implements NFSConsts, MountdConsts, RPCConsts {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	PathMapper pm = new NTPathMapper();
 	TimeMapper tm = new Java3TimeMapper(); // new NTTimeMapper();
 	FileSystemInfo fsi = new FileSystemInfo();

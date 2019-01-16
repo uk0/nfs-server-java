@@ -1,13 +1,15 @@
 import java.util.*;
 
 class UnixPathMapper implements PathMapper {
-    public String MakePath(String directory, String component) {
+    @Override
+	public String MakePath(String directory, String component) {
 	return Canonicalize(directory + "/" + component);
     }
 
     // Put path into canonical form, eg. remove any aliasing information.
     //   This means removing extra path separaters.
-    public String Canonicalize(String path) {
+    @Override
+	public String Canonicalize(String path) {
         if (path.indexOf("//") < 0)
 	    return path;
 
@@ -23,7 +25,8 @@ class UnixPathMapper implements PathMapper {
 	return sb.toString();
     }
 
-    public String Convert(String unixPath) {
+    @Override
+	public String Convert(String unixPath) {
     	return unixPath;
     }
 }

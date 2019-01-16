@@ -18,17 +18,15 @@
 // 							March 1997
 //
 
-import java.io.*;
-
-class unixnfs extends nfs implements NFSConsts, MountdConsts, RPCConsts {
+class unixfs1 extends nfs implements NFSConsts, MountdConsts, RPCConsts {
     public static void main(String args[]) {
 	PathMapper pm = new UnixPathMapper();
 	TimeMapper tm = new Java3TimeMapper(); // new NTTimeMapper();
 	FileSystemInfo fsi = new FileSystemInfo();
-	new ntnfs(pm, tm, fsi, args);
+	new unixfs1(pm, tm, fsi, args);
     };
 
-    unixnfs(PathMapper pm, TimeMapper tm, FileSystemInfo fsi, String args[]) {
+    unixfs1(PathMapper pm, TimeMapper tm, FileSystemInfo fsi, String args[]) {
 	super(pm, tm, fsi, args);
 	Run();
     }
