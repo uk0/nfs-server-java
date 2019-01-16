@@ -1,0 +1,36 @@
+This package contains a pure java implementation of the NFS server protocol.
+It includes the NFS service, the Mountd service and the Portmapper.  
+Everything needed to export file systems is provided.
+
+NFS identifies files by numbers (called file handles or fhandles).  This is
+the inode plus the file system id on a UNIX system.  Since Java doesn't provide
+this kind of information, I generate a serial number for each file when it is
+first accessed and store this number in a file called cache.  If the server
+sees this file it will load the contents into memory before running.  This
+allows you to stop and restart the NFS server without having to unmount and
+remount the file systems remotely.
+
+Java isn't quite as advertized, platform independent.  There are a couple of
+things which have to be handled on a per platform basis.  These services are
+encapsulated in classes and implementations are provided for some platforms.
+
+The things which are platform specific are:
+
+	1: File names - java provides classes to access files, but they all
+	   take Strings for the file name.  These strings are platform 
+	   specific, for example on Windows NT you can open the file
+	   c:\hithere.txt, on UNIX you might pass in /home/hithere.txt.
+
+	2: Time stamps - there is a way to get modify times on files in java
+	   but it returns a platform specific value.  On windows NT it returns
+	   the DOS modify time (100 ns intervals since 1600).  There is a
+	   class called the TimeMapper which handles converting this into
+	   UNIX/NFS time (seconds since 1970).
+
+Currently there is a complete implementation for WinNT/Win95 (they are the
+same in this package).  At one point there was a UNIX implementation but
+since all UNIXs seem to have NFS servers already, and the Java implementations
+on UNIX tend to be slow, I have stopped working on that code.
+
+							Steven Procter
+							June 1998

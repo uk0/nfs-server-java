@@ -1,0 +1,27 @@
+You should be able to say javac *.java to compile the package.
+
+The Makefile in this directory is a GNU makefile.  If you have gnu make, you
+will be able to compile the system by typing make.  If you don't have
+it, you can get it at prep.ai.mit.edu or ftp.cdrom.com.
+
+To run the system, you start with the platform specific main class.  Currently
+there is only 1, ntnfs.  So to run the server type:
+
+	java ntnfs
+
+There is an access control mechanism based on IP addresses numbers in this
+NFS server.  At startup time it reads in the file exports, which is a list
+of file systems and addresses.  Any mount request is compared to this list.
+This is pretty much the same as on UNIX systems without any flags - all mounts
+are read write, etc.  Following is an example exports line to allow anyone
+in the class C network 10.1.2.0 to mount c:\shared.  The /24 at the end is
+the number of significant bits in the address - more bits means more 
+restrictive.
+
+	c:\shared	10.1.2.0/24
+
+It helps if you give the java runtime more memory.  Otherwise it may run out
+during periods of high activity.  This can be done with the -mx flag.
+
+							Steven Procter
+							June 1998
